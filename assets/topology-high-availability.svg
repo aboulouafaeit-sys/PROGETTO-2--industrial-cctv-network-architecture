@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="100%" height="100%" style="background:#0b0f19; font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,sans-serif;">
+  <defs>
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="firewallGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="storageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Title Header -->
+  <rect x="0" y="0" width="1400" height="900" fill="url(#bgGlow)"/>
+  <rect x="40" y="30" width="1320" height="70" rx="12" fill="#111827" stroke="#1f2937" stroke-width="1.5" filter="url(#shadow)"/>
+  <circle cx="75" cy="65" r="18" fill="#0284c7" />
+  <path d="M68 65 L73 70 L83 60" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="110" y="58" fill="#f8fafc" font-size="20" font-weight="700">INDUSTRIAL CCTV &amp; HIGH-AVAILABILITY NETWORK ARCHITECTURE</text>
+  <text x="110" y="80" fill="#94a3b8" font-size="13">20-Camera Zero-Trust Factory Infrastructure | IEC 62443-3-3 SL-2 &amp; NIS2 Compliant</text>
+  <rect x="1170" y="47" width="165" height="34" rx="6" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1"/>
+  <text x="1185" y="69" fill="#38bdf8" font-size="12" font-weight="600">PRODUCTION READY</text>
+
+  <!-- FIELD ACCESS LAYER (LEFT) -->
+  <rect x="40" y="130" width="360" height="730" rx="14" fill="#0b1329" stroke="#1e293b" stroke-width="2"/>
+  <text x="65" y="165" fill="#38bdf8" font-size="16" font-weight="700">FIELD INDUSTRIAL ACCESS (IDFs)</text>
+  <text x="65" y="185" fill="#64748b" font-size="12">Category 6A S/FTP | IP66 Cabinets | Dual 24V DC-UPS</text>
+
+  <!-- IDF-1 Card -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="210" width="320" height="190" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="85" cy="235" r="8" fill="#10b981" filter="url(#glowGreen)"/>
+    <text x="105" y="240" fill="#f1f5f9" font-size="14" font-weight="700">IDF-1: SW-ACC-IDF1 (IE3400)</text>
+    <text x="85" y="265" fill="#94a3b8" font-size="11">Role: 8x Perimeter AI 4K Cameras (CAM-01..08)</text>
+    <text x="85" y="285" fill="#94a3b8" font-size="11">VLAN: 20 (CCTV-PERIMETER) | 10.240.20.0/24</text>
+    <text x="85" y="305" fill="#94a3b8" font-size="11">PoE Load: 190.0W / 480W (39.58%) | 802.3bt</text>
+    <text x="85" y="325" fill="#94a3b8" font-size="11">Cabling: Cat6A S/FTP Shielded (Single Ground)</text>
+    <rect x="85" y="345" width="270" height="35" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="98" y="367" fill="#38bdf8" font-size="11" font-weight="600">Dual 10G SFP+ Uplink LACP (Po1)</text>
+  </g>
+
+  <!-- IDF-2 Card -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="425" width="320" height="190" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="85" cy="450" r="8" fill="#10b981" filter="url(#glowGreen)"/>
+    <text x="105" y="455" fill="#f1f5f9" font-size="14" font-weight="700">IDF-2: SW-ACC-IDF2 (IE3400)</text>
+    <text x="85" y="480" fill="#94a3b8" font-size="11">Role: 8x Factory High-Speed 60fps (CAM-09..16)</text>
+    <text x="85" y="500" fill="#94a3b8" font-size="11">VLAN: 21 (CCTV-FACTORY) | 10.240.21.0/24</text>
+    <text x="85" y="520" fill="#94a3b8" font-size="11">PoE Load: 103.2W / 480W (21.50%) | M12 X-Code</text>
+    <text x="85" y="540" fill="#94a3b8" font-size="11">EMI Mitigation: High VFD &amp; Arc Weld Shielding</text>
+    <rect x="85" y="560" width="270" height="35" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="98" y="582" fill="#38bdf8" font-size="11" font-weight="600">Dual 10G SFP+ Uplink LACP (Po2)</text>
+  </g>
+
+  <!-- IDF-3 Card -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="640" width="320" height="200" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="85" cy="665" r="8" fill="#10b981" filter="url(#glowGreen)"/>
+    <text x="105" y="670" fill="#f1f5f9" font-size="14" font-weight="700">IDF-3: SW-ACC-IDF3 (IE3400)</text>
+    <text x="85" y="695" fill="#94a3b8" font-size="11">Role: 2x Docks (CAM-17..18) + 2x ANPR (CAM-19..20)</text>
+    <text x="85" y="715" fill="#94a3b8" font-size="11">VLAN: 21 &amp; 22 (ANPR-GATE) | 10.240.22.0/24</text>
+    <text x="85" y="735" fill="#94a3b8" font-size="11">PoE Load: 76.8W / 480W (16.00%)</text>
+    <text x="85" y="755" fill="#94a3b8" font-size="11">Security: Dedicated ANPR Shutter &amp; IR Trigger</text>
+    <rect x="85" y="780" width="270" height="35" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="98" y="802" fill="#38bdf8" font-size="11" font-weight="600">Dual 10G SFP+ Uplink LACP (Po3)</text>
+  </g>
+
+  <!-- FIBER BACKBONE CONNECTIONS (TRUNKS) -->
+  <path d="M380 305 C 440 305, 450 350, 520 350" stroke="#0ea5e9" stroke-width="3" fill="none" stroke-dasharray="6,4"/>
+  <path d="M380 520 C 440 520, 450 400, 520 400" stroke="#0ea5e9" stroke-width="3" fill="none" stroke-dasharray="6,4"/>
+  <path d="M380 740 C 440 740, 450 450, 520 450" stroke="#0ea5e9" stroke-width="3" fill="none" stroke-dasharray="6,4"/>
+  
+  <text x="405" y="325" fill="#38bdf8" font-size="11" font-weight="600">10G OM4/OS2</text>
+  <text x="405" y="445" fill="#38bdf8" font-size="11" font-weight="600">MACsec-256</text>
+  <text x="405" y="615" fill="#38bdf8" font-size="11" font-weight="600">Armored Dual Path</text>
+
+  <!-- MDF CORE LAYER (MIDDLE) -->
+  <rect x="520" y="130" width="450" height="730" rx="14" fill="#091429" stroke="#1e3a8a" stroke-width="2"/>
+  <text x="545" y="165" fill="#60a5fa" font-size="16" font-weight="700">MDF CORE &amp; FABRIC LAYER (42U RACK)</text>
+  <text x="545" y="185" fill="#64748b" font-size="12">StackWise-480 SSO | VRF Microsegmentation | Non-Routed iSCSI</text>
+
+  <!-- Core Switch Stack Box -->
+  <g filter="url(#shadow)">
+    <rect x="545" y="210" width="400" height="280" rx="10" fill="url(#cardGrad)" stroke="#2563eb" stroke-width="2"/>
+    <rect x="560" y="225" width="370" height="50" rx="6" fill="url(#coreGrad)"/>
+    <text x="575" y="255" fill="#fff" font-size="15" font-weight="700">SW-CORE-STK (Cisco C9300-24S Stack)</text>
+    
+    <text x="565" y="300" fill="#93c5fd" font-size="12" font-weight="600">Active / Standby Hot Stateful Switchover (SSO)</text>
+    <text x="565" y="320" fill="#94a3b8" font-size="11">• StackWise-480 Ring Interconnect @ 480 Gbps</text>
+    <text x="565" y="340" fill="#94a3b8" font-size="11">• VRF-Lite: VRF_CCTV_OT (L3 Boundaries &amp; SVI Gateways)</text>
+    <text x="565" y="360" fill="#94a3b8" font-size="11">• Security: DHCP Snooping, Dynamic ARP Inspection (DAI)</text>
+    <text x="565" y="380" fill="#94a3b8" font-size="11">• QoS Engine: MQC Strict Priority (EF) &amp; AF41 Video (70%)</text>
+    <text x="565" y="400" fill="#94a3b8" font-size="11">• Routing: OSPFv2 Area 0 peering to FortiGate HA Cluster</text>
+    
+    <rect x="565" y="420" width="370" height="55" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="580" y="442" fill="#38bdf8" font-size="11" font-weight="600">Ports: 24x 10G SFP+ | Jumbo Frames MTU 9198</text>
+    <text x="580" y="460" fill="#a5f3fc" font-size="10">Sub-second Failover NSF/SSO Deterministic &lt;50ms</text>
+  </g>
+
+  <!-- Dell PowerEdge VMS Card -->
+  <g filter="url(#shadow)">
+    <rect x="545" y="510" width="400" height="155" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="570" cy="535" r="8" fill="#10b981" filter="url(#glowGreen)"/>
+    <text x="590" y="540" fill="#f1f5f9" font-size="14" font-weight="700">Dell PowerEdge R750xa (VMS &amp; AI Node)</text>
+    <text x="565" y="565" fill="#94a3b8" font-size="11">GPU: NVIDIA RTX 6000 Ada (48GB GDDR6 ECC) / TensorRT</text>
+    <text x="565" y="585" fill="#94a3b8" font-size="11">Dual Xeon Gold 6338 (64T) | 128GB ECC | Dual 10G LACP</text>
+    <text x="565" y="605" fill="#94a3b8" font-size="11">IP: 10.240.30.10 (VLAN 30) | Milestone / Genetec Server</text>
+    <text x="565" y="625" fill="#94a3b8" font-size="11">AI Workload: 20 Streams Secondary Inferencing &lt;12ms</text>
+    <text x="565" y="645" fill="#10b981" font-size="11" font-weight="600">Storage Connectivity: Dual 10G iSCSI MPIO Round-Robin</text>
+  </g>
+
+  <!-- Storage Vault SAN Card -->
+  <g filter="url(#shadow)">
+    <rect x="545" y="685" width="400" height="155" rx="10" fill="url(#cardGrad)" stroke="#059669" stroke-width="1.5"/>
+    <rect x="560" y="700" width="370" height="35" rx="6" fill="url(#storageGrad)"/>
+    <text x="575" y="723" fill="#fff" font-size="13" font-weight="700">Dell PowerVault ME5012 SAN (Isolated Fabric)</text>
+    <text x="565" y="755" fill="#a7f3d0" font-size="11" font-weight="600">RAID-6: 12x 16TB SAS (9 Data + 2 Parity + 1 Global Spare)</text>
+    <text x="565" y="775" fill="#94a3b8" font-size="11">Net Usable: 117.87 TiB | Ingestion: 1.073 TiB/day</text>
+    <text x="565" y="795" fill="#34d399" font-size="11" font-weight="700">Calculated Retention: 109.9 DAYS (Target: &gt;=30 Days)</text>
+    <text x="565" y="815" fill="#94a3b8" font-size="11">VLAN 40 (Subnet A) &amp; VLAN 41 (Subnet B) Non-Routed L2</text>
+  </g>
+
+  <!-- FIREWALL & SOC LAYER (RIGHT) -->
+  <rect x="1000" y="130" width="360" height="730" rx="14" fill="#130a17" stroke="#4c1d95" stroke-width="2"/>
+  <text x="1025" y="165" fill="#c084fc" font-size="16" font-weight="700">ZERO-TRUST SECURITY &amp; SOC</text>
+  <text x="1025" y="185" fill="#64748b" font-size="12">Next-Gen Inspection | Airgap | SOC Workstations</text>
+
+  <!-- FortiGate HA Card -->
+  <g filter="url(#shadow)">
+    <rect x="1020" y="210" width="320" height="240" rx="10" fill="url(#cardGrad)" stroke="#b91c1c" stroke-width="2"/>
+    <rect x="1035" y="225" width="290" height="40" rx="6" fill="url(#firewallGrad)"/>
+    <text x="1050" y="250" fill="#fff" font-size="14" font-weight="700">FortiGate 100F HA Cluster</text>
+    <text x="1035" y="285" fill="#fca5a5" font-size="11" font-weight="600">Active-Passive FGCP Heartbeat (ha1 / ha2)</text>
+    <text x="1035" y="305" fill="#94a3b8" font-size="11">• Layer-7 Deep Packet Inspection (DPI)</text>
+    <text x="1035" y="325" fill="#94a3b8" font-size="11">• Protocol Filtering: Strict RTSP (554), ONVIF, RTP</text>
+    <text x="1035" y="345" fill="#94a3b8" font-size="11">• Lateral Movement Block: Inter-Camera Deny</text>
+    <text x="1035" y="365" fill="#94a3b8" font-size="11">• Airgap Enforcement: Internet Outbound Blocked</text>
+    <text x="1035" y="385" fill="#94a3b8" font-size="11">• IPS Throughput &gt; 2.6 Gbps | State Sync &lt;1s</text>
+    <rect x="1035" y="405" width="290" height="30" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="1045" y="425" fill="#f87171" font-size="11" font-weight="600">VIP: 10.240.99.1 (VLAN 99 Transit)</text>
+  </g>
+
+  <!-- SOC Monitoring Card -->
+  <g filter="url(#shadow)">
+    <rect x="1020" y="480" width="320" height="170" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="1045" cy="505" r="8" fill="#10b981" filter="url(#glowGreen)"/>
+    <text x="1065" y="510" fill="#f1f5f9" font-size="14" font-weight="700">SOC Control Room (VLAN 50)</text>
+    <text x="1035" y="535" fill="#94a3b8" font-size="11">Subnet: 10.240.50.0/26 | Gateway: 10.240.50.1</text>
+    <text x="1035" y="555" fill="#94a3b8" font-size="11">Clients: Multi-Monitor Security Workstations</text>
+    <text x="1035" y="575" fill="#94a3b8" font-size="11">Traffic Flow: HTTPS API &amp; RTSPS from VMS</text>
+    <text x="1035" y="595" fill="#94a3b8" font-size="11">Security: Direct Camera Access Blocked by NGFW</text>
+    <rect x="1035" y="615" width="290" height="25" rx="4" fill="#0f172a"/>
+    <text x="1045" y="632" fill="#a855f7" font-size="10" font-weight="600">Zero Direct Edge Exposure Architecture</text>
+  </g>
+
+  <!-- Central SIEM / OOBM Card -->
+  <g filter="url(#shadow)">
+    <rect x="1020" y="675" width="320" height="165" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="1045" cy="700" r="8" fill="#38bdf8"/>
+    <text x="1065" y="705" fill="#f1f5f9" font-size="14" font-weight="700">Central SIEM &amp; OOBM (VLAN 10)</text>
+    <text x="1035" y="730" fill="#94a3b8" font-size="11">Syslog Host: 10.240.10.35 (UDP 514 local7)</text>
+    <text x="1035" y="750" fill="#94a3b8" font-size="11">SNMPv3: SHA-256 Auth / AES-256 Priv</text>
+    <text x="1035" y="770" fill="#94a3b8" font-size="11">NTP Server: 10.240.10.1 (Precision Clock)</text>
+    <text x="1035" y="790" fill="#94a3b8" font-size="11">Telemetry: Environmental &amp; Cabinet Tamper Alarms</text>
+    <text x="1035" y="810" fill="#38bdf8" font-size="11" font-weight="600">24/7 Security Event Auditing Active</text>
+  </g>
+
+  <!-- Inter-cluster connecting lines -->
+  <path d="M945 350 L 1020 330" stroke="#f87171" stroke-width="3" stroke-dasharray="6,4"/>
+  <path d="M1020 540 C 970 540, 970 580, 945 580" stroke="#c084fc" stroke-width="2.5" stroke-dasharray="4,4"/>
+  <path d="M945 610 L 945 685" stroke="#10b981" stroke-width="3"/>
+  <text x="955" y="650" fill="#10b981" font-size="10" font-weight="700">Dual 10G iSCSI</text>
+</svg>

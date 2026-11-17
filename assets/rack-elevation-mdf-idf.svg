@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 950" width="100%" height="100%" style="background:#090d16; font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,sans-serif;">
+  <defs>
+    <linearGradient id="rackGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="2%" stop-color="#0f172a"/>
+      <stop offset="98%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="unitGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="ciscoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#075985"/>
+    </linearGradient>
+    <linearGradient id="fortiGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </linearGradient>
+    <linearGradient id="dellGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#115e59"/>
+    </linearGradient>
+    <filter id="rackShadow" x="-10%" y="-5%" width="120%" height="110%">
+      <feDropShadow dx="0" dy="12" stdDeviation="8" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Header -->
+  <text x="50" y="50" fill="#f8fafc" font-size="22" font-weight="700">MDF &amp; IDF PHYSICAL RACK ELEVATIONS</text>
+  <text x="50" y="75" fill="#94a3b8" font-size="13">Structured Cabling, Dual Redundant Power Distribution &amp; Environmental Protection</text>
+
+  <!-- ==================== LEFT: MDF 42U SERVER RACK ==================== -->
+  <g transform="translate(60, 110)" filter="url(#rackShadow)">
+    <!-- Rack frame -->
+    <rect x="0" y="0" width="580" height="800" rx="8" fill="url(#rackGrad)" stroke="#475569" stroke-width="3"/>
+    <text x="20" y="-15" fill="#38bdf8" font-size="16" font-weight="700">MDF 42U ENTERPRISE SERVER RACK (APC NetShelter SX 1000mm)</text>
+    
+    <!-- RU Markers -->
+    <rect x="15" y="15" width="25" height="770" fill="#020617" rx="3"/>
+    <text x="20" y="45" fill="#64748b" font-size="10">42U</text>
+    <text x="20" y="160" fill="#64748b" font-size="10">36U</text>
+    <text x="20" y="320" fill="#64748b" font-size="10">28U</text>
+    <text x="20" y="480" fill="#64748b" font-size="10">20U</text>
+    <text x="20" y="640" fill="#64748b" font-size="10">10U</text>
+    <text x="20" y="775" fill="#64748b" font-size="10">01U</text>
+
+    <!-- Top Cable & Fiber Ingress -->
+    <rect x="45" y="20" width="515" height="35" fill="#1e293b" stroke="#334155" rx="4"/>
+    <text x="60" y="42" fill="#94a3b8" font-size="11" font-weight="600">Top Overhead Fiber Cable Entry Duct &amp; Grounding Bar (TMGB)</text>
+
+    <!-- 40U-41U: Dual Fiber Patch Panels -->
+    <rect x="45" y="65" width="515" height="40" fill="url(#unitGrad)" stroke="#38bdf8" rx="4"/>
+    <circle cx="65" cy="85" r="4" fill="#38bdf8"/>
+    <circle cx="80" cy="85" r="4" fill="#38bdf8"/>
+    <text x="100" y="89" fill="#f8fafc" font-size="12" font-weight="600">41U-40U: 2x 1U LC-Duplex 24-Port Fiber Patch Panels (Trunks from IDF 1-3)</text>
+
+    <!-- 38U-39U: Cisco Catalyst 9300 Core Stack -->
+    <rect x="45" y="115" width="515" height="60" fill="url(#ciscoGrad)" stroke="#38bdf8" stroke-width="1.5" rx="4"/>
+    <text x="60" y="140" fill="#fff" font-size="12" font-weight="700">39U: Cisco Catalyst 9300-24S (Core Switch 1 - Stack Master)</text>
+    <text x="60" y="162" fill="#bfdbfe" font-size="11">24x 10G SFP+ | Dual Redundant AC PSU (Feed A + Feed B) | StackWise-480</text>
+
+    <rect x="45" y="180" width="515" height="60" fill="url(#ciscoGrad)" stroke="#38bdf8" stroke-width="1.5" rx="4"/>
+    <text x="60" y="205" fill="#fff" font-size="12" font-weight="700">38U: Cisco Catalyst 9300-24S (Core Switch 2 - Stack Standby)</text>
+    <text x="60" y="227" fill="#bfdbfe" font-size="11">24x 10G SFP+ | Hardware SSO Failover &lt;50ms | Line-Rate MACsec-256</text>
+
+    <!-- 36U-37U: FortiGate 100F HA Pair -->
+    <rect x="45" y="250" width="515" height="40" fill="url(#fortiGrad)" stroke="#f87171" rx="4"/>
+    <text x="60" y="275" fill="#fff" font-size="12" font-weight="700">37U: FortiGate 100F Next-Gen Firewall (Unit 1 - Active Master)</text>
+
+    <rect x="45" y="295" width="515" height="40" fill="url(#fortiGrad)" stroke="#f87171" rx="4"/>
+    <text x="60" y="320" fill="#fff" font-size="12" font-weight="700">36U: FortiGate 100F Next-Gen Firewall (Unit 2 - Passive Standby)</text>
+
+    <!-- 30U-32U: Dell PowerEdge R750xa (VMS & AI) -->
+    <rect x="45" y="350" width="515" height="75" fill="url(#unitGrad)" stroke="#10b981" stroke-width="1.5" rx="4"/>
+    <text x="60" y="380" fill="#f8fafc" font-size="13" font-weight="700">32U-31U: Dell PowerEdge R750xa (VMS Server &amp; AI Engine)</text>
+    <text x="60" y="402" fill="#94a3b8" font-size="11">Dual Intel Xeon Gold 6338 | NVIDIA RTX 6000 Ada (48GB) | Dual 10G LACP</text>
+    <circle cx="530" cy="380" r="5" fill="#10b981"/>
+
+    <!-- 26U-28U: Dell PowerVault ME5012 SAN -->
+    <rect x="45" y="435" width="515" height="85" fill="url(#dellGrad)" stroke="#34d399" stroke-width="2" rx="4"/>
+    <text x="60" y="465" fill="#fff" font-size="13" font-weight="700">28U-27U: Dell PowerVault ME5012 Storage SAN (12-Bay 2U)</text>
+    <text x="60" y="488" fill="#a7f3d0" font-size="11">12x 16TB SAS 12G in RAID-6 + Hot Spare | 117.87 TiB Usable | 109.9 Days</text>
+    <text x="60" y="508" fill="#d1fae5" font-size="10">Dual Active-Active Controllers A &amp; B | 4x 10G iSCSI MPIO (VLAN 40 &amp; 41)</text>
+
+    <!-- 20U-25U: Cable Organizers & Vent Blanks -->
+    <rect x="45" y="530" width="515" height="60" fill="#111827" stroke="#1f2937" rx="4"/>
+    <text x="180" y="565" fill="#475569" font-size="11">Horizontal 2U Cable Organizers &amp; Vented Blanking Panels</text>
+
+    <!-- 01U-06U: APC Smart-UPS SRT 5000VA RM + Battery Module -->
+    <rect x="45" y="600" width="515" height="90" fill="#1e1e2e" stroke="#f59e0b" stroke-width="1.5" rx="4"/>
+    <text x="60" y="635" fill="#fbbf24" font-size="13" font-weight="700">06U-04U: APC Smart-UPS SRT 5000VA RM (5kVA / 4.5kW)</text>
+    <text x="60" y="658" fill="#94a3b8" font-size="11">Online Double Conversion | Dual AC Infeed | Zero Transfer Time</text>
+    <text x="60" y="678" fill="#cbd5e1" font-size="10">SNMPv3 Network Management Card (AP9641) | Battery Runtime: 45 min</text>
+
+    <rect x="45" y="700" width="515" height="80" fill="#1e1e2e" stroke="#d97706" rx="4"/>
+    <text x="60" y="740" fill="#fbbf24" font-size="12" font-weight="700">03U-01U: APC SRT192RMBP2 Extended External Battery Pack</text>
+  </g>
+
+  <!-- ==================== RIGHT: INDUSTRIAL IDF CABINET ==================== -->
+  <g transform="translate(740, 110)" filter="url(#rackShadow)">
+    <!-- Industrial Enclosure frame -->
+    <rect x="0" y="0" width="580" height="800" rx="14" fill="#0f172a" stroke="#0284c7" stroke-width="3"/>
+    <text x="20" y="-15" fill="#38bdf8" font-size="16" font-weight="700">INDUSTRIAL IDF FIELD CABINET (IP66 / NEMA 4 Rittal AX)</text>
+
+    <!-- Peltier Thermoelectric Unit at Top -->
+    <rect x="35" y="25" width="510" height="90" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" rx="8"/>
+    <text x="60" y="60" fill="#38bdf8" font-size="14" font-weight="700">Closed-Loop Thermoelectric Peltier Cooler (IP66 Air-to-Air)</text>
+    <text x="60" y="85" fill="#94a3b8" font-size="11">No outside air exchange: 100% sealed against dust, oil mists, and humidity</text>
+    <circle cx="500" cy="70" r="15" fill="#0284c7" fill-opacity="0.2"/>
+    <text x="495" y="74" fill="#38bdf8" font-size="12">❄</text>
+
+    <!-- 1U Shielded Cat6A Patch Panel -->
+    <rect x="35" y="130" width="510" height="65" fill="#111827" stroke="#475569" rx="6"/>
+    <text x="55" y="160" fill="#f8fafc" font-size="12" font-weight="700">1U 24-Port Category 6A S/FTP Shielded Patch Panel</text>
+    <text x="55" y="180" fill="#38bdf8" font-size="11">Bonded directly to TGB via 16mm² copper braid (Single-Point Ground)</text>
+
+    <!-- 1U Optical Breakout Drawer -->
+    <rect x="35" y="205" width="510" height="55" fill="#111827" stroke="#475569" rx="6"/>
+    <text x="55" y="235" fill="#f8fafc" font-size="12" font-weight="700">1U Optical Fiber Breakout Drawer (12x LC-Duplex OS2 / OM4)</text>
+
+    <!-- Cisco IE3400 Industrial Heavy Duty Switch (DIN Mounted) -->
+    <rect x="35" y="275" width="510" height="150" fill="url(#unitGrad)" stroke="#0ea5e9" stroke-width="2" rx="8"/>
+    <rect x="50" y="290" width="480" height="40" rx="4" fill="url(#ciscoGrad)"/>
+    <text x="65" y="315" fill="#fff" font-size="13" font-weight="700">Cisco Catalyst IE3400 Heavy Duty (IE-3400-8P4S)</text>
+    <text x="55" y="355" fill="#94a3b8" font-size="11">• 8x Gigabit PoE++ Ports (90W 802.3bt) | Operating Temp: -40°C to +75°C</text>
+    <text x="55" y="375" fill="#94a3b8" font-size="11">• 4x 10G SFP+ Uplinks | Dual DC Inputs | IEEE 1588 PTP Hardware Timing</text>
+    <text x="55" y="395" fill="#94a3b8" font-size="11">• Industrial Alarm Relays: Door Tamper Switch &amp; Cabinet Over-Temp Probe</text>
+    <circle cx="500" cy="355" r="5" fill="#10b981"/>
+
+    <!-- Phoenix Contact QUINT4 DC-UPS (DIN Rail) -->
+    <rect x="35" y="440" width="510" height="130" fill="#1e293b" stroke="#10b981" stroke-width="1.5" rx="8"/>
+    <text x="55" y="470" fill="#34d399" font-size="13" font-weight="700">Phoenix Contact QUINT4-UPS 24V DC / 20A Power Supply</text>
+    <text x="55" y="495" fill="#94a3b8" font-size="11">• IQ Technology Battery Monitoring &amp; State of Charge (SoC) Telemetry</text>
+    <text x="55" y="515" fill="#94a3b8" font-size="11">• Redundant Dual Feed Power Inputs with Class I Div 2 Surge Suppressor</text>
+    <text x="55" y="535" fill="#a7f3d0" font-size="11">Li-Ion Battery Pack Buffer: 45 min runtime at maximum PoE load</text>
+
+    <!-- Grounding Busbar (TGB) -->
+    <rect x="35" y="585" width="510" height="60" fill="#854d0e" stroke="#eab308" stroke-width="1.5" rx="6"/>
+    <text x="55" y="615" fill="#fef08a" font-size="12" font-weight="700">Telecommunications Grounding Busbar (TGB) - ANSI/TIA-607-B</text>
+    <text x="55" y="633" fill="#fef9c3" font-size="10">Solid Electrolytic Copper Bar 50x6mm | Resistance to TMGB &lt; 1.0 Ohm</text>
+
+    <!-- Industrial Enclosure Specs & Door Interlock -->
+    <rect x="35" y="660" width="510" height="110" fill="#0b1329" stroke="#1e293b" rx="6"/>
+    <text x="55" y="690" fill="#38bdf8" font-size="12" font-weight="700">Enclosure Physical Hardening (IEC 60529 / IK10)</text>
+    <text x="55" y="710" fill="#94a3b8" font-size="11">• Double-bit Key Cam Lock with Microswitch Tamper Contact</text>
+    <text x="55" y="730" fill="#94a3b8" font-size="11">• Foamed-in PU Gasket resisting hydraulic oils &amp; aggressive solvents</text>
+    <text x="55" y="750" fill="#94a3b8" font-size="11">• IP66 / NEMA 4 certified against pressurized factory washdown water</text>
+  </g>
+</svg>

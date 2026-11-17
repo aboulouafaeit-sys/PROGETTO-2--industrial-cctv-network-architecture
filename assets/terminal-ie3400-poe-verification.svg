@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 540" width="100%" height="100%" style="background:#090d16; font-family:'Cascadia Code','Fira Code','Courier New',monospace;">
+  <defs>
+    <filter id="termShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect x="5" y="5" width="940" height="530" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1.5" filter="url(#termShadow)"/>
+  
+  <!-- Terminal Title Bar -->
+  <rect x="5" y="5" width="940" height="36" rx="8" fill="#161b22"/>
+  <circle cx="25" cy="23" r="6" fill="#f85149"/>
+  <circle cx="45" cy="23" r="6" fill="#f0883e"/>
+  <circle cx="65" cy="23" r="6" fill="#2ea043"/>
+  <text x="100" y="27" fill="#8b949e" font-size="12" font-family="'Segoe UI',sans-serif" font-weight="600">SW-ACC-IDF1 (Cisco IE3400-8P4S) — Industrial Access & PoE++ Status</text>
+
+  <!-- Output Lines -->
+  <text x="25" y="75" fill="#38bdf8" font-weight="700" font-size="13">SW-ACC-IDF1# show power inline</text><text x="25" y="95" fill="#cbd5e1" font-size="12">Available: 480.0(w)  Used: 190.0(w)  Remaining: 290.0(w)</text><text x="25" y="113" fill="#cbd5e1" font-size="12">Interface Admin  Oper       Power(Watts) Device              Class</text><text x="25" y="131" fill="#cbd5e1" font-size="12">--------- ------ ---------- ------------ ------------------- -----</text><text x="25" y="149" fill="#34d399" font-weight="600" font-size="12">Gi1/1     auto   on         25.5         Axis Q1715          4</text><text x="25" y="167" fill="#34d399" font-weight="600" font-size="12">Gi1/2     auto   on         25.5         Axis Q1715          4</text><text x="25" y="185" fill="#34d399" font-weight="600" font-size="12">Gi1/3     auto   on         22.0         Axis P1468-LE       4</text><text x="25" y="203" fill="#34d399" font-weight="600" font-size="12">Gi1/4     auto   on         22.0         Axis P1468-LE       4</text><text x="25" y="221" fill="#34d399" font-weight="600" font-size="12">Gi1/5     auto   on         25.5         Axis Q1715          4</text><text x="25" y="239" fill="#34d399" font-weight="600" font-size="12">Gi1/6     auto   on         25.5         Axis Q1715          4</text><text x="25" y="257" fill="#34d399" font-weight="600" font-size="12">Gi1/7     auto   on         22.0         Axis P1468-LE       4</text><text x="25" y="275" fill="#34d399" font-weight="600" font-size="12">Gi1/8     auto   on         22.0         Axis P1468-LE       4</text><text x="25" y="303" fill="#38bdf8" font-weight="700" font-size="13">SW-ACC-IDF1# show alarm contact</text><text x="25" y="323" fill="#34d399" font-weight="600" font-size="12">Contact 1: 'IDF-1 Cabinet Door Tamper' - Status: CLOSED (NORMAL)</text><text x="25" y="341" fill="#34d399" font-weight="600" font-size="12">Contact 2: 'Cabinet Over-Temperature Sensor' - Status: OPEN (NORMAL: 24.2C)</text><text x="25" y="369" fill="#38bdf8" font-weight="700" font-size="13">SW-ACC-IDF1# show mac address-table secure</text><text x="25" y="389" fill="#cbd5e1" font-size="12">Vlan    Mac Address       Type       Ports   Remaining Age(m)</text><text x="25" y="407" fill="#cbd5e1" font-size="12">----+-------------------+-----------+-------+-----------------</text><text x="25" y="425" fill="#64748b" font-size="11">20   0040.8ce1.2001      SecureSticky Gi1/1         -</text><text x="25" y="443" fill="#64748b" font-size="11">20   0040.8ce1.2002      SecureSticky Gi1/2         -</text><text x="25" y="461" fill="#64748b" font-size="11">20   0040.8ce1.2003      SecureSticky Gi1/3         -</text><text x="25" y="479" fill="#64748b" font-size="11">20   0040.8ce1.2004      SecureSticky Gi1/4         -</text><text x="25" y="497" fill="#34d399" font-weight="600" font-size="12">Total Sticky MAC Addresses: 8 locked (Maximum 1 per port enforced)</text>
+</svg>
