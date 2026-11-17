@@ -26,431 +26,286 @@
 
   <!-- KPI Cards Row -->
   <g transform="translate(20, 90)">
-    <!-- KPI 1 -->
     <rect x="0" y="0" width="300" height="75" rx="6" fill="#111622" stroke="#1f293d" filter="url(#dashShadow)"/>
     <text x="15" y="25" fill="#94a3b8" font-size="11">TOTAL VIDEO INGESTION</text>
     <text x="15" y="55" fill="#38bdf8" font-size="22" font-weight="700">104.00 Mbps</text>
     <text x="180" y="53" fill="#10b981" font-size="11">0.56% 10G Bus Load</text>
 
-    <!-- KPI 2 -->
     <rect x="320" y="0" width="300" height="75" rx="6" fill="#111622" stroke="#1f293d" filter="url(#dashShadow)"/>
     <text x="335" y="25" fill="#94a3b8" font-size="11">GPU INFERENCE SPEED</text>
     <text x="335" y="55" fill="#a855f7" font-size="22" font-weight="700">11.2 ms / frame</text>
     <text x="480" y="53" fill="#c084fc" font-size="11">TensorRT FP16</text>
 
-    <!-- KPI 3 -->
     <rect x="640" y="0" width="300" height="75" rx="6" fill="#111622" stroke="#1f293d" filter="url(#dashShadow)"/>
     <text x="655" y="25" fill="#94a3b8" font-size="11">STORAGE AUTONOMY (RAID-6)</text>
     <text x="655" y="55" fill="#34d399" font-size="22" font-weight="700">109.9 Days</text>
     <text x="810" y="53" fill="#10b981" font-size="11">117.87 TiB Usable</text>
 
-    <!-- KPI 4 -->
     <rect x="960" y="0" width="300" height="75" rx="6" fill="#111622" stroke="#1f293d" filter="url(#dashShadow)"/>
     <text x="975" y="25" fill="#94a3b8" font-size="11">NETWORK PACKET LOSS</text>
     <text x="975" y="55" fill="#10b981" font-size="22" font-weight="700">0.000 %</text>
     <text x="1150" y="53" fill="#34d399" font-size="11">Jitter &lt; 0.2ms</text>
   </g>
 
-  <!-- Video Wall Grid (4 columns x 5 rows = 20 Cameras) -->
+  <!-- Video Wall Grid -->
   <g transform="translate(20, 185)">
-    <!-- 20 Camera Tiles -->
 
     <g transform="translate(0, 0)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-01 - Perimeter N-01</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#38bdf8" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">4K 25fps | H.265 | 6.0 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#38bdf8" font-size="9" font-weight="700">VLAN 20</text>
     </g>
     <g transform="translate(255, 0)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-02 - Perimeter N-02</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#38bdf8" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">4K 25fps | H.265 | 6.0 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#38bdf8" font-size="9" font-weight="700">VLAN 20</text>
     </g>
     <g transform="translate(510, 0)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-03 - Perimeter E-01</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#38bdf8" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">4K 25fps | H.265 | 6.0 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#38bdf8" font-size="9" font-weight="700">VLAN 20</text>
     </g>
     <g transform="translate(765, 0)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-04 - Perimeter E-02</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#38bdf8" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">4K 25fps | H.265 | 6.0 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#38bdf8" font-size="9" font-weight="700">VLAN 20</text>
     </g>
     <g transform="translate(1020, 0)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-05 - Perimeter S-01</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#38bdf8" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">4K 25fps | H.265 | 6.0 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#38bdf8" font-size="9" font-weight="700">VLAN 20</text>
     </g>
     <g transform="translate(0, 160)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-06 - Perimeter S-02</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#38bdf8" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">4K 25fps | H.265 | 6.0 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#38bdf8" font-size="9" font-weight="700">VLAN 20</text>
     </g>
     <g transform="translate(255, 160)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-07 - Perimeter W-01</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#38bdf8" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">4K 25fps | H.265 | 6.0 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#38bdf8" font-size="9" font-weight="700">VLAN 20</text>
     </g>
     <g transform="translate(510, 160)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-08 - Perimeter W-02</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#38bdf8" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">4K 25fps | H.265 | 6.0 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#38bdf8" font-size="9" font-weight="700">VLAN 20</text>
     </g>
     <g transform="translate(765, 160)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-09 - Factory Line 1-Feed</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#f59e0b" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | H.265 | 4.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#f59e0b" font-size="9" font-weight="700">VLAN 21</text>
     </g>
     <g transform="translate(1020, 160)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-10 - Factory Line 1-Stamp</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#f59e0b" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | H.265 | 4.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#f59e0b" font-size="9" font-weight="700">VLAN 21</text>
     </g>
     <g transform="translate(0, 320)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-11 - Factory Line 1-Assem</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#f59e0b" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | H.265 | 4.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#f59e0b" font-size="9" font-weight="700">VLAN 21</text>
     </g>
     <g transform="translate(255, 320)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-12 - Factory Line 2-Robot</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#f59e0b" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | H.265 | 4.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#f59e0b" font-size="9" font-weight="700">VLAN 21</text>
     </g>
     <g transform="translate(510, 320)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-13 - Factory Line 2-Weld</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#f59e0b" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | H.265 | 4.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#f59e0b" font-size="9" font-weight="700">VLAN 21</text>
     </g>
     <g transform="translate(765, 320)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-14 - Factory Line 2-QC</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#f59e0b" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | H.265 | 4.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#f59e0b" font-size="9" font-weight="700">VLAN 21</text>
     </g>
     <g transform="translate(1020, 320)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-15 - High-Bay Aisle 1</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#f59e0b" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | H.265 | 4.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#f59e0b" font-size="9" font-weight="700">VLAN 21</text>
     </g>
     <g transform="translate(0, 480)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-16 - High-Bay Aisle 2</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#f59e0b" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | H.265 | 4.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#f59e0b" font-size="9" font-weight="700">VLAN 21</text>
     </g>
     <g transform="translate(255, 480)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-17 - Logistics Dock 1</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#f59e0b" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | H.265 | 4.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#f59e0b" font-size="9" font-weight="700">VLAN 21</text>
     </g>
     <g transform="translate(510, 480)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-18 - Logistics Dock 2</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#f59e0b" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | H.265 | 4.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#f59e0b" font-size="9" font-weight="700">VLAN 21</text>
     </g>
     <g transform="translate(765, 480)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-19 - Main Gate Entry LPR</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#ec4899" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | ANPR | 5.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#ec4899" font-size="9" font-weight="700">VLAN 22</text>
     </g>
     <g transform="translate(1020, 480)">
       <rect x="0" y="0" width="240" height="145" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="240" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">CAM-20 - Main Gate Exit LPR</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="224" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="#ec4899" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">1080p 60fps | ANPR | 5.5 Mbps</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="#ec4899" font-size="9" font-weight="700">VLAN 22</text>

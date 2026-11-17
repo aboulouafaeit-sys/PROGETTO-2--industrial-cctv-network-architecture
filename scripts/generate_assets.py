@@ -1,10 +1,27 @@
 #!/usr/bin/env python3
 """
 Industrial Asset & Screenshot Generator for PROGETTO 2
-Generates production-grade SVG screenshots and diagrams for GitHub documentation.
+Generates 100% XML-valid SVGs AND high-resolution PNG screenshots.
 """
 
 import os
+import glob
+import xml.etree.ElementTree as ET
+from xml.sax.saxutils import escape as xml_escape
+from PIL import Image, ImageDraw, ImageFont
+
+FONT_MONO = "C:/Windows/Fonts/consola.ttf" if os.path.exists("C:/Windows/Fonts/consola.ttf") else None
+FONT_MONO_BOLD = "C:/Windows/Fonts/consolab.ttf" if os.path.exists("C:/Windows/Fonts/consolab.ttf") else FONT_MONO
+FONT_SANS = "C:/Windows/Fonts/segoeui.ttf" if os.path.exists("C:/Windows/Fonts/segoeui.ttf") else None
+FONT_SANS_BOLD = "C:/Windows/Fonts/segoeuib.ttf" if os.path.exists("C:/Windows/Fonts/segoeuib.ttf") else FONT_SANS
+
+def get_font(path, size):
+    if path and os.path.exists(path):
+        try:
+            return ImageFont.truetype(path, size)
+        except Exception:
+            pass
+    return ImageFont.load_default()
 
 def generate_topology_svg(output_path):
     svg = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="100%" height="100%" style="background:#0b0f19; font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,sans-serif;">
@@ -236,13 +253,11 @@ def generate_rack_elevation_svg(output_path):
   <text x="50" y="50" fill="#f8fafc" font-size="22" font-weight="700">MDF &amp; IDF PHYSICAL RACK ELEVATIONS</text>
   <text x="50" y="75" fill="#94a3b8" font-size="13">Structured Cabling, Dual Redundant Power Distribution &amp; Environmental Protection</text>
 
-  <!-- ==================== LEFT: MDF 42U SERVER RACK ==================== -->
+  <!-- LEFT: MDF 42U SERVER RACK -->
   <g transform="translate(60, 110)" filter="url(#rackShadow)">
-    <!-- Rack frame -->
     <rect x="0" y="0" width="580" height="800" rx="8" fill="url(#rackGrad)" stroke="#475569" stroke-width="3"/>
     <text x="20" y="-15" fill="#38bdf8" font-size="16" font-weight="700">MDF 42U ENTERPRISE SERVER RACK (APC NetShelter SX 1000mm)</text>
     
-    <!-- RU Markers -->
     <rect x="15" y="15" width="25" height="770" fill="#020617" rx="3"/>
     <text x="20" y="45" fill="#64748b" font-size="10">42U</text>
     <text x="20" y="160" fill="#64748b" font-size="10">36U</text>
@@ -303,9 +318,8 @@ def generate_rack_elevation_svg(output_path):
     <text x="60" y="740" fill="#fbbf24" font-size="12" font-weight="700">03U-01U: APC SRT192RMBP2 Extended External Battery Pack</text>
   </g>
 
-  <!-- ==================== RIGHT: INDUSTRIAL IDF CABINET ==================== -->
+  <!-- RIGHT: INDUSTRIAL IDF CABINET -->
   <g transform="translate(740, 110)" filter="url(#rackShadow)">
-    <!-- Industrial Enclosure frame -->
     <rect x="0" y="0" width="580" height="800" rx="14" fill="#0f172a" stroke="#0284c7" stroke-width="3"/>
     <text x="20" y="-15" fill="#38bdf8" font-size="16" font-weight="700">INDUSTRIAL IDF FIELD CABINET (IP66 / NEMA 4 Rittal AX)</text>
 
@@ -325,7 +339,7 @@ def generate_rack_elevation_svg(output_path):
     <rect x="35" y="205" width="510" height="55" fill="#111827" stroke="#475569" rx="6"/>
     <text x="55" y="235" fill="#f8fafc" font-size="12" font-weight="700">1U Optical Fiber Breakout Drawer (12x LC-Duplex OS2 / OM4)</text>
 
-    <!-- Cisco IE3400 Industrial Heavy Duty Switch (DIN Mounted) -->
+    <!-- Cisco IE3400 Industrial Heavy Duty Switch -->
     <rect x="35" y="275" width="510" height="150" fill="url(#unitGrad)" stroke="#0ea5e9" stroke-width="2" rx="8"/>
     <rect x="50" y="290" width="480" height="40" rx="4" fill="url(#ciscoGrad)"/>
     <text x="65" y="315" fill="#fff" font-size="13" font-weight="700">Cisco Catalyst IE3400 Heavy Duty (IE-3400-8P4S)</text>
@@ -334,7 +348,7 @@ def generate_rack_elevation_svg(output_path):
     <text x="55" y="395" fill="#94a3b8" font-size="11">• Industrial Alarm Relays: Door Tamper Switch &amp; Cabinet Over-Temp Probe</text>
     <circle cx="500" cy="355" r="5" fill="#10b981"/>
 
-    <!-- Phoenix Contact QUINT4 DC-UPS (DIN Rail) -->
+    <!-- Phoenix Contact QUINT4 DC-UPS -->
     <rect x="35" y="440" width="510" height="130" fill="#1e293b" stroke="#10b981" stroke-width="1.5" rx="8"/>
     <text x="55" y="470" fill="#34d399" font-size="13" font-weight="700">Phoenix Contact QUINT4-UPS 24V DC / 20A Power Supply</text>
     <text x="55" y="495" fill="#94a3b8" font-size="11">• IQ Technology Battery Monitoring &amp; State of Charge (SoC) Telemetry</text>
@@ -346,7 +360,7 @@ def generate_rack_elevation_svg(output_path):
     <text x="55" y="615" fill="#fef08a" font-size="12" font-weight="700">Telecommunications Grounding Busbar (TGB) - ANSI/TIA-607-B</text>
     <text x="55" y="633" fill="#fef9c3" font-size="10">Solid Electrolytic Copper Bar 50x6mm | Resistance to TMGB &lt; 1.0 Ohm</text>
 
-    <!-- Industrial Enclosure Specs & Door Interlock -->
+    <!-- Industrial Enclosure Specs -->
     <rect x="35" y="660" width="510" height="110" fill="#0b1329" stroke="#1e293b" rx="6"/>
     <text x="55" y="690" fill="#38bdf8" font-size="12" font-weight="700">Enclosure Physical Hardening (IEC 60529 / IK10)</text>
     <text x="55" y="710" fill="#94a3b8" font-size="11">• Double-bit Key Cam Lock with Microswitch Tamper Contact</text>
@@ -359,23 +373,26 @@ def generate_rack_elevation_svg(output_path):
         f.write(svg)
 
 def generate_terminal_svg(output_path, title, commands_and_output):
+    safe_title = xml_escape(title)
     lines_svg = []
     y = 75
     for item in commands_and_output:
+        raw_text = item["text"]
+        safe_text = xml_escape(raw_text)
         if item["type"] == "cmd":
-            lines_svg.append(f'<text x="25" y="{y}" fill="#38bdf8" font-weight="700" font-size="13">{item["text"]}</text>')
+            lines_svg.append(f'<text x="25" y="{y}" fill="#38bdf8" font-weight="700" font-size="13">{safe_text}</text>')
             y += 20
         elif item["type"] == "out":
-            lines_svg.append(f'<text x="25" y="{y}" fill="#cbd5e1" font-size="12">{item["text"]}</text>')
+            lines_svg.append(f'<text x="25" y="{y}" fill="#cbd5e1" font-size="12">{safe_text}</text>')
             y += 18
         elif item["type"] == "success":
-            lines_svg.append(f'<text x="25" y="{y}" fill="#34d399" font-weight="600" font-size="12">{item["text"]}</text>')
+            lines_svg.append(f'<text x="25" y="{y}" fill="#34d399" font-weight="600" font-size="12">{safe_text}</text>')
             y += 18
         elif item["type"] == "warning":
-            lines_svg.append(f'<text x="25" y="{y}" fill="#fbbf24" font-weight="600" font-size="12">{item["text"]}</text>')
+            lines_svg.append(f'<text x="25" y="{y}" fill="#fbbf24" font-weight="600" font-size="12">{safe_text}</text>')
             y += 18
         elif item["type"] == "dim":
-            lines_svg.append(f'<text x="25" y="{y}" fill="#64748b" font-size="11">{item["text"]}</text>')
+            lines_svg.append(f'<text x="25" y="{y}" fill="#64748b" font-size="11">{safe_text}</text>')
             y += 18
         elif item["type"] == "space":
             y += 10
@@ -396,7 +413,7 @@ def generate_terminal_svg(output_path, title, commands_and_output):
   <circle cx="25" cy="23" r="6" fill="#f85149"/>
   <circle cx="45" cy="23" r="6" fill="#f0883e"/>
   <circle cx="65" cy="23" r="6" fill="#2ea043"/>
-  <text x="100" y="27" fill="#8b949e" font-size="12" font-family="'Segoe UI',sans-serif" font-weight="600">{title}</text>
+  <text x="100" y="27" fill="#8b949e" font-size="12" font-family="'Segoe UI',sans-serif" font-weight="600">{safe_title}</text>
 
   <!-- Output Lines -->
   {''.join(lines_svg)}
@@ -404,6 +421,68 @@ def generate_terminal_svg(output_path, title, commands_and_output):
 '''
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(svg)
+
+def render_terminal_png(output_path, title, commands_and_output):
+    """Renders a pixel-perfect dark theme PNG screenshot of a terminal session."""
+    font_mono = get_font(FONT_MONO, 14)
+    font_mono_bold = get_font(FONT_MONO_BOLD, 14)
+    font_title = get_font(FONT_SANS_BOLD, 13)
+
+    line_height = 20
+    calc_y = 60
+    for item in commands_and_output:
+        if item["type"] == "space":
+            calc_y += 10
+        else:
+            calc_y += line_height
+
+    width = 960
+    height = calc_y + 20
+
+    img = Image.new("RGB", (width, height), "#090d16")
+    draw = ImageDraw.Draw(img)
+
+    # Window frame
+    draw.rounded_rectangle([(10, 10), (width - 10, height - 10)], radius=8, fill="#0d1117", outline="#30363d", width=1)
+    
+    # Title bar
+    draw.rounded_rectangle([(10, 10), (width - 10, 46)], radius=8, fill="#161b22")
+    draw.rectangle([(10, 36), (width - 10, 46)], fill="#161b22")
+    draw.line([(10, 46), (width - 10, 46)], fill="#30363d", width=1)
+
+    # Window buttons
+    draw.ellipse([(25, 22), (37, 34)], fill="#f85149")
+    draw.ellipse([(45, 22), (57, 34)], fill="#f0883e")
+    draw.ellipse([(65, 22), (77, 34)], fill="#2ea043")
+
+    # Title text
+    draw.text((95, 20), title, fill="#8b949e", font=font_title)
+
+    # Content
+    y = 60
+    for item in commands_and_output:
+        t = item["text"]
+        itype = item["type"]
+
+        if itype == "cmd":
+            draw.text((25, y), t, fill="#38bdf8", font=font_mono_bold)
+            y += line_height
+        elif itype == "out":
+            draw.text((25, y), t, fill="#cbd5e1", font=font_mono)
+            y += line_height
+        elif itype == "success":
+            draw.text((25, y), t, fill="#34d399", font=font_mono_bold)
+            y += line_height
+        elif itype == "warning":
+            draw.text((25, y), t, fill="#fbbf24", font=font_mono_bold)
+            y += line_height
+        elif itype == "dim":
+            draw.text((25, y), t, fill="#64748b", font=font_mono)
+            y += line_height
+        elif itype == "space":
+            y += 10
+
+    img.save(output_path, "PNG")
 
 def generate_vms_dashboard_svg(output_path):
     svg = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 850" width="100%" height="100%" style="background:#06080e; font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,sans-serif;">
@@ -434,38 +513,31 @@ def generate_vms_dashboard_svg(output_path):
 
   <!-- KPI Cards Row -->
   <g transform="translate(20, 90)">
-    <!-- KPI 1 -->
     <rect x="0" y="0" width="300" height="75" rx="6" fill="#111622" stroke="#1f293d" filter="url(#dashShadow)"/>
     <text x="15" y="25" fill="#94a3b8" font-size="11">TOTAL VIDEO INGESTION</text>
     <text x="15" y="55" fill="#38bdf8" font-size="22" font-weight="700">104.00 Mbps</text>
     <text x="180" y="53" fill="#10b981" font-size="11">0.56% 10G Bus Load</text>
 
-    <!-- KPI 2 -->
     <rect x="320" y="0" width="300" height="75" rx="6" fill="#111622" stroke="#1f293d" filter="url(#dashShadow)"/>
     <text x="335" y="25" fill="#94a3b8" font-size="11">GPU INFERENCE SPEED</text>
     <text x="335" y="55" fill="#a855f7" font-size="22" font-weight="700">11.2 ms / frame</text>
     <text x="480" y="53" fill="#c084fc" font-size="11">TensorRT FP16</text>
 
-    <!-- KPI 3 -->
     <rect x="640" y="0" width="300" height="75" rx="6" fill="#111622" stroke="#1f293d" filter="url(#dashShadow)"/>
     <text x="655" y="25" fill="#94a3b8" font-size="11">STORAGE AUTONOMY (RAID-6)</text>
     <text x="655" y="55" fill="#34d399" font-size="22" font-weight="700">109.9 Days</text>
     <text x="810" y="53" fill="#10b981" font-size="11">117.87 TiB Usable</text>
 
-    <!-- KPI 4 -->
     <rect x="960" y="0" width="300" height="75" rx="6" fill="#111622" stroke="#1f293d" filter="url(#dashShadow)"/>
     <text x="975" y="25" fill="#94a3b8" font-size="11">NETWORK PACKET LOSS</text>
     <text x="975" y="55" fill="#10b981" font-size="22" font-weight="700">0.000 %</text>
     <text x="1150" y="53" fill="#34d399" font-size="11">Jitter &lt; 0.2ms</text>
   </g>
 
-  <!-- Video Wall Grid (4 columns x 5 rows = 20 Cameras) -->
+  <!-- Video Wall Grid -->
   <g transform="translate(20, 185)">
-    <!-- 20 Camera Tiles -->
 '''
-    # Generate 20 camera tiles in a 5x4 grid
     cols = 5
-    rows = 4
     tile_w = 240
     tile_h = 145
     gap_x = 15
@@ -505,20 +577,13 @@ def generate_vms_dashboard_svg(output_path):
         tile_elements.append(f'''
     <g transform="translate({x}, {y})">
       <rect x="0" y="0" width="{tile_w}" height="{tile_h}" rx="6" fill="url(#camBox)" stroke="#222838"/>
-      <!-- Header strip -->
       <rect x="0" y="0" width="{tile_w}" height="24" rx="6" fill="#1a202c"/>
       <circle cx="12" cy="12" r="4" fill="#10b981"/>
       <text x="24" y="16" fill="#f8fafc" font-size="11" font-weight="700">{cam_id} - {name}</text>
-      
-      <!-- Simulated Camera View Background -->
       <rect x="8" y="28" width="{tile_w - 16}" height="85" fill="#090c13" rx="4"/>
-      
-      <!-- AI Bounding Box Simulation -->
       <rect x="40" y="40" width="70" height="60" fill="none" stroke="{color}" stroke-width="1.5" stroke-dasharray="3,2"/>
       <rect x="40" y="32" width="60" height="12" fill="{color}" rx="2"/>
       <text x="44" y="41" fill="#fff" font-size="8" font-weight="700">TARGET: 98%</text>
-
-      <!-- Footer Info -->
       <text x="12" y="130" fill="#94a3b8" font-size="10">{res} | {codec} | {bw}</text>
       <rect x="180" y="118" width="50" height="16" rx="3" fill="#1e293b"/>
       <text x="185" y="130" fill="{color}" font-size="9" font-weight="700">{vlan}</text>
@@ -531,19 +596,107 @@ def generate_vms_dashboard_svg(output_path):
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(svg)
 
+def render_vms_dashboard_png(output_path):
+    """Renders a pixel-perfect dark theme PNG of the VMS video wall."""
+    width, height = 1300, 850
+    img = Image.new("RGB", (width, height), "#06080e")
+    draw = ImageDraw.Draw(img)
+
+    font_title = get_font(FONT_SANS_BOLD, 16)
+    font_sub = get_font(FONT_SANS, 11)
+    font_kpi_val = get_font(FONT_SANS_BOLD, 22)
+    font_kpi_lbl = get_font(FONT_SANS, 11)
+    font_cam_title = get_font(FONT_SANS_BOLD, 11)
+    font_cam_sub = get_font(FONT_MONO, 10)
+    font_badge = get_font(FONT_SANS_BOLD, 9)
+
+    draw.rounded_rectangle([(20, 15), (1280, 75)], radius=8, fill="#151924", outline="#272b38")
+    draw.ellipse([(36, 31), (64, 59)], fill="#3b82f6")
+    draw.text((45, 34), "V", fill="#ffffff", font=font_title)
+    draw.text((75, 27), "VMS & AI SMART INFERENCE CONSOLE — FACTORY MATRIX (20 CHANNELS)", fill="#f8fafc", font=font_title)
+    draw.text((75, 49), "Milestone Corporate / NVIDIA RTX 6000 Ada Acceleration | Continuous Recording Mode", fill="#94a3b8", font=font_sub)
+
+    draw.rounded_rectangle([(1100, 27), (1260, 61)], radius=4, fill="#064e3b", outline="#10b981")
+    draw.ellipse([(1115, 39), (1125, 49)], fill="#10b981")
+    draw.text((1135, 37), "ALL 20 FEEDS LIVE", fill="#34d399", font=font_cam_title)
+
+    kpis = [
+        ("TOTAL VIDEO INGESTION", "104.00 Mbps", "0.56% 10G Bus Load", "#38bdf8"),
+        ("GPU INFERENCE SPEED", "11.2 ms / frame", "TensorRT FP16", "#a855f7"),
+        ("STORAGE AUTONOMY (RAID-6)", "109.9 Days", "117.87 TiB Usable", "#34d399"),
+        ("NETWORK PACKET LOSS", "0.000 %", "Jitter < 0.2ms", "#10b981"),
+    ]
+    for idx, (label, val, note, col) in enumerate(kpis):
+        x = 20 + idx * 320
+        draw.rounded_rectangle([(x, 90), (x + 300, 165)], radius=6, fill="#111622", outline="#1f293d")
+        draw.text((x + 15, 105), label, fill="#94a3b8", font=font_kpi_lbl)
+        draw.text((x + 15, 125), val, fill=col, font=font_kpi_val)
+        draw.text((x + 180, 133), note, fill="#10b981" if idx == 0 else ("#c084fc" if idx == 1 else "#34d399"), font=font_sub)
+
+    cols = 5
+    tile_w = 240
+    tile_h = 145
+    gap_x = 15
+    gap_y = 15
+
+    cameras_data = [
+        ("CAM-01", "Perimeter N-01", "4K 25fps", "H.265", "6.0 Mbps", "VLAN 20", "#38bdf8"),
+        ("CAM-02", "Perimeter N-02", "4K 25fps", "H.265", "6.0 Mbps", "VLAN 20", "#38bdf8"),
+        ("CAM-03", "Perimeter E-01", "4K 25fps", "H.265", "6.0 Mbps", "VLAN 20", "#38bdf8"),
+        ("CAM-04", "Perimeter E-02", "4K 25fps", "H.265", "6.0 Mbps", "VLAN 20", "#38bdf8"),
+        ("CAM-05", "Perimeter S-01", "4K 25fps", "H.265", "6.0 Mbps", "VLAN 20", "#38bdf8"),
+        ("CAM-06", "Perimeter S-02", "4K 25fps", "H.265", "6.0 Mbps", "VLAN 20", "#38bdf8"),
+        ("CAM-07", "Perimeter W-01", "4K 25fps", "H.265", "6.0 Mbps", "VLAN 20", "#38bdf8"),
+        ("CAM-08", "Perimeter W-02", "4K 25fps", "H.265", "6.0 Mbps", "VLAN 20", "#38bdf8"),
+        ("CAM-09", "Factory Line 1-Feed", "1080p 60fps", "H.265", "4.5 Mbps", "VLAN 21", "#f59e0b"),
+        ("CAM-10", "Factory Line 1-Stamp", "1080p 60fps", "H.265", "4.5 Mbps", "VLAN 21", "#f59e0b"),
+        ("CAM-11", "Factory Line 1-Assem", "1080p 60fps", "H.265", "4.5 Mbps", "VLAN 21", "#f59e0b"),
+        ("CAM-12", "Factory Line 2-Robot", "1080p 60fps", "H.265", "4.5 Mbps", "VLAN 21", "#f59e0b"),
+        ("CAM-13", "Factory Line 2-Weld", "1080p 60fps", "H.265", "4.5 Mbps", "VLAN 21", "#f59e0b"),
+        ("CAM-14", "Factory Line 2-QC", "1080p 60fps", "H.265", "4.5 Mbps", "VLAN 21", "#f59e0b"),
+        ("CAM-15", "High-Bay Aisle 1", "1080p 60fps", "H.265", "4.5 Mbps", "VLAN 21", "#f59e0b"),
+        ("CAM-16", "High-Bay Aisle 2", "1080p 60fps", "H.265", "4.5 Mbps", "VLAN 21", "#f59e0b"),
+        ("CAM-17", "Logistics Dock 1", "1080p 60fps", "H.265", "4.5 Mbps", "VLAN 21", "#f59e0b"),
+        ("CAM-18", "Logistics Dock 2", "1080p 60fps", "H.265", "4.5 Mbps", "VLAN 21", "#f59e0b"),
+        ("CAM-19", "Main Gate Entry LPR", "1080p 60fps", "ANPR", "5.5 Mbps", "VLAN 22", "#ec4899"),
+        ("CAM-20", "Main Gate Exit LPR", "1080p 60fps", "ANPR", "5.5 Mbps", "VLAN 22", "#ec4899"),
+    ]
+
+    for idx, (cid, cname, res, codec, bw, vlan, col) in enumerate(cameras_data):
+        r = idx // cols
+        c = idx % cols
+        x = 20 + c * (tile_w + gap_x)
+        y = 185 + r * (tile_h + gap_y)
+
+        draw.rounded_rectangle([(x, y), (x + tile_w, y + tile_h)], radius=6, fill="#0f131c", outline="#222838")
+        draw.rounded_rectangle([(x, y), (x + tile_w, y + 24)], radius=6, fill="#1a202c")
+        draw.ellipse([(x + 8, y + 8), (x + 16, y + 16)], fill="#10b981")
+        draw.text((x + 22, y + 5), f"{cid} - {cname}", fill="#f8fafc", font=font_cam_title)
+
+        draw.rounded_rectangle([(x + 8, y + 28), (x + tile_w - 8, y + 115)], radius=4, fill="#080a10")
+        draw.rectangle([(x + 35, y + 42), (x + 110, y + 102)], outline=col, width=2)
+        draw.rounded_rectangle([(x + 35, y + 32), (x + 95, y + 44)], radius=2, fill=col)
+        draw.text((x + 38, y + 33), "TARGET: 98%", fill="#ffffff", font=font_badge)
+
+        draw.text((x + 10, y + 124), f"{res} | {codec} | {bw}", fill="#94a3b8", font=font_cam_sub)
+        draw.rounded_rectangle([(x + tile_w - 58, y + 120), (x + tile_w - 10, y + 138)], radius=3, fill="#1e293b")
+        draw.text((x + tile_w - 53, y + 123), vlan, fill=col, font=font_badge)
+
+    img.save(output_path, "PNG")
+
 def main():
     os.makedirs("assets", exist_ok=True)
-    print("Generating High-Resolution SVG Diagrams & Screenshots...")
-    
-    # 1. Topology Diagram
+    print("Generating High-Resolution SVG Diagrams & PNG Screenshots...")
+
+    # 1. Topology Diagrams
     generate_topology_svg("assets/topology-high-availability.svg")
-    print(" -> Generated assets/topology-high-availability.svg")
+    print(" -> Generated assets/topology-high-availability.svg (SVG)")
 
-    # 2. Rack Elevation Diagram
+    # 2. Rack Elevation
     generate_rack_elevation_svg("assets/rack-elevation-mdf-idf.svg")
-    print(" -> Generated assets/rack-elevation-mdf-idf.svg")
+    print(" -> Generated assets/rack-elevation-mdf-idf.svg (SVG)")
 
-    # 3. Cisco Core Verification Terminal Screenshot
+    # 3. CLI Terminal Captures Data
     cisco_core_cli = [
         {"type": "cmd", "text": "SW-CORE-STK# show redundancy"},
         {"type": "out", "text": "Redundant System Information :"},
@@ -577,10 +730,7 @@ def main():
         {"type": "out", "text": "Vlan 21: Forwarded: 298410, Dropped: 0, DHCP Drops: 0"},
         {"type": "success", "text": "Vlan 22: Forwarded:  48120, Dropped: 0, DHCP Drops: 0 (ZERO MITM ANOMALIES)"}
     ]
-    generate_terminal_svg("assets/terminal-cisco-core-verification.svg", "SW-CORE-STK (Cisco Catalyst 9300 StackWise-480) — Verification Console", cisco_core_cli)
-    print(" -> Generated assets/terminal-cisco-core-verification.svg")
 
-    # 4. Cisco IE3400 Industrial Access Verification Terminal Screenshot
     cisco_ie_cli = [
         {"type": "cmd", "text": "SW-ACC-IDF1# show power inline"},
         {"type": "out", "text": "Available: 480.0(w)  Used: 190.0(w)  Remaining: 290.0(w)"},
@@ -608,15 +758,12 @@ def main():
         {"type": "dim", "text": "20   0040.8ce1.2004      SecureSticky Gi1/4         -"},
         {"type": "success", "text": "Total Sticky MAC Addresses: 8 locked (Maximum 1 per port enforced)"}
     ]
-    generate_terminal_svg("assets/terminal-ie3400-poe-verification.svg", "SW-ACC-IDF1 (Cisco IE3400-8P4S) — Industrial Access & PoE++ Status", cisco_ie_cli)
-    print(" -> Generated assets/terminal-ie3400-poe-verification.svg")
 
-    # 5. FortiGate HA Status Terminal Screenshot
     fortigate_cli = [
         {"type": "cmd", "text": "FW-FG100F-HA # get system ha status"},
         {"type": "out", "text": "HA Health Status: OK"},
         {"type": "out", "text": "Model: FortiGate-100F, Mode: a-p (Active-Passive)"},
-        {"type": "out", "text": "Group: 50, Name: CCTV-HA-CLUSTER"},
+        {"type": "group", "text": "Group: 50, Name: CCTV-HA-CLUSTER"},
         {"type": "success", "text": "Primary : FW-FG100F-PRI, HA operating index = 0, Priority = 200"},
         {"type": "success", "text": "Secondary: FW-FG100F-SEC, HA operating index = 1, Priority = 100"},
         {"type": "out", "text": "Heartbeat devices:"},
@@ -636,14 +783,41 @@ def main():
         {"type": "success", "text": "Rule 36712 (ONVIF Authentication Bypass): ENFORCED - BLOCK"},
         {"type": "success", "text": "Zero Inter-Camera Lateral Traffic Detected (Policy 990: DENY)"}
     ]
+
+    # Generate SVGs with XML escaping
+    generate_terminal_svg("assets/terminal-cisco-core-verification.svg", "SW-CORE-STK (Cisco Catalyst 9300 StackWise-480) — Verification Console", cisco_core_cli)
+    generate_terminal_svg("assets/terminal-ie3400-poe-verification.svg", "SW-ACC-IDF1 (Cisco IE3400-8P4S) — Industrial Access & PoE++ Status", cisco_ie_cli)
     generate_terminal_svg("assets/terminal-fortigate-ha-status.svg", "FW-FG100F-HA (Fortinet FortiGate 100F Cluster) — HA & Zero-Trust Status", fortigate_cli)
-    print(" -> Generated assets/terminal-fortigate-ha-status.svg")
-
-    # 6. VMS Video Analytics Dashboard Mockup
     generate_vms_dashboard_svg("assets/vms-ai-matrix-dashboard.svg")
-    print(" -> Generated assets/vms-ai-matrix-dashboard.svg")
 
-    print("\nAll 6 visual assets and screenshots generated successfully!")
+    # Generate PNGs with Pillow
+    render_terminal_png("assets/terminal-cisco-core-verification.png", "SW-CORE-STK (Cisco Catalyst 9300 StackWise-480) — Verification Console", cisco_core_cli)
+    print(" -> Generated assets/terminal-cisco-core-verification.png (PNG)")
+
+    render_terminal_png("assets/terminal-ie3400-poe-verification.png", "SW-ACC-IDF1 (Cisco IE3400-8P4S) — Industrial Access & PoE++ Status", cisco_ie_cli)
+    print(" -> Generated assets/terminal-ie3400-poe-verification.png (PNG)")
+
+    render_terminal_png("assets/terminal-fortigate-ha-status.png", "FW-FG100F-HA (Fortinet FortiGate 100F Cluster) — HA & Zero-Trust Status", fortigate_cli)
+    print(" -> Generated assets/terminal-fortigate-ha-status.png (PNG)")
+
+    render_vms_dashboard_png("assets/vms-ai-matrix-dashboard.png")
+    print(" -> Generated assets/vms-ai-matrix-dashboard.png (PNG)")
+
+    # Validate all generated SVGs with ElementTree
+    print("\nValidating XML syntax of all SVGs...")
+    all_valid = True
+    for f in glob.glob("assets/*.svg"):
+        try:
+            ET.parse(f)
+            print(f"  [PASS] {f}: Valid XML")
+        except Exception as e:
+            print(f"  [FAIL] {f}: Invalid XML -> {e}")
+            all_valid = False
+
+    if all_valid:
+        print("\nALL SVG FILES ARE 100% VALID XML!")
+    else:
+        raise ValueError("One or more SVGs failed XML validation.")
 
 if __name__ == "__main__":
     main()

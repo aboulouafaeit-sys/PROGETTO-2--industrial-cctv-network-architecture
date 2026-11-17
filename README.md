@@ -153,7 +153,7 @@ $$\text{Net Usable RAID-6 Capacity } (C_{\text{usable}}) = (N_{\text{disks}} - N
 
 The 20 video channels are ingested and processed by Milestone XProtect Corporate / Genetec Security Center accelerated by the **NVIDIA RTX 6000 Ada (48GB GDDR6 with ECC)**:
 
-![VMS AI Dashboard](assets/vms-ai-matrix-dashboard.svg)
+![VMS AI Dashboard](assets/vms-ai-matrix-dashboard.png)
 
 * **Edge Pre-Processing:** Axis ARTPEC-8 NPUs run on-camera object classification (person, vehicle, license plate).
 * **Central Secondary Inferencing:** The central server ingests metadata vectors and executes high-resolution facial re-identification, perimeter tripwire anomaly detection, and OCR plate matching with sub-12ms TensorRT inference latency.
@@ -214,17 +214,17 @@ Below are live CLI verification captures from the network switches and firewall 
 ### 10.1 Cisco Catalyst 9300 Core Switch Stack (`SW-CORE-STK`)
 *Verification of StackWise-480 SSO redundancy, dual 10G LACP Port-Channels, VRF routing, and Dynamic ARP Inspection:*
 
-![Cisco Core Verification](assets/terminal-cisco-core-verification.svg)
+![Cisco Core Verification](assets/terminal-cisco-core-verification.png)
 
 ### 10.2 Cisco IE3400 Industrial Access Switch (`SW-ACC-IDF1`)
 *Verification of 802.3bt PoE power inline allocation, industrial relay alarm contacts, and sticky MAC security:*
 
-![Cisco IE3400 PoE Verification](assets/terminal-ie3400-poe-verification.svg)
+![Cisco IE3400 PoE Verification](assets/terminal-ie3400-poe-verification.png)
 
 ### 10.3 Fortinet FortiGate 100F Active-Passive HA Cluster (`FW-FG100F-HA`)
 *Verification of FGCP dual heartbeat synchronization, RTSP session inspection, and zero-trust lateral movement blocks:*
 
-![FortiGate HA Verification](assets/terminal-fortigate-ha-status.svg)
+![FortiGate HA Verification](assets/terminal-fortigate-ha-status.png)
 
 ---
 

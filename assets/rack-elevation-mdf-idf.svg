@@ -31,13 +31,11 @@
   <text x="50" y="50" fill="#f8fafc" font-size="22" font-weight="700">MDF &amp; IDF PHYSICAL RACK ELEVATIONS</text>
   <text x="50" y="75" fill="#94a3b8" font-size="13">Structured Cabling, Dual Redundant Power Distribution &amp; Environmental Protection</text>
 
-  <!-- ==================== LEFT: MDF 42U SERVER RACK ==================== -->
+  <!-- LEFT: MDF 42U SERVER RACK -->
   <g transform="translate(60, 110)" filter="url(#rackShadow)">
-    <!-- Rack frame -->
     <rect x="0" y="0" width="580" height="800" rx="8" fill="url(#rackGrad)" stroke="#475569" stroke-width="3"/>
     <text x="20" y="-15" fill="#38bdf8" font-size="16" font-weight="700">MDF 42U ENTERPRISE SERVER RACK (APC NetShelter SX 1000mm)</text>
     
-    <!-- RU Markers -->
     <rect x="15" y="15" width="25" height="770" fill="#020617" rx="3"/>
     <text x="20" y="45" fill="#64748b" font-size="10">42U</text>
     <text x="20" y="160" fill="#64748b" font-size="10">36U</text>
@@ -98,9 +96,8 @@
     <text x="60" y="740" fill="#fbbf24" font-size="12" font-weight="700">03U-01U: APC SRT192RMBP2 Extended External Battery Pack</text>
   </g>
 
-  <!-- ==================== RIGHT: INDUSTRIAL IDF CABINET ==================== -->
+  <!-- RIGHT: INDUSTRIAL IDF CABINET -->
   <g transform="translate(740, 110)" filter="url(#rackShadow)">
-    <!-- Industrial Enclosure frame -->
     <rect x="0" y="0" width="580" height="800" rx="14" fill="#0f172a" stroke="#0284c7" stroke-width="3"/>
     <text x="20" y="-15" fill="#38bdf8" font-size="16" font-weight="700">INDUSTRIAL IDF FIELD CABINET (IP66 / NEMA 4 Rittal AX)</text>
 
@@ -120,7 +117,7 @@
     <rect x="35" y="205" width="510" height="55" fill="#111827" stroke="#475569" rx="6"/>
     <text x="55" y="235" fill="#f8fafc" font-size="12" font-weight="700">1U Optical Fiber Breakout Drawer (12x LC-Duplex OS2 / OM4)</text>
 
-    <!-- Cisco IE3400 Industrial Heavy Duty Switch (DIN Mounted) -->
+    <!-- Cisco IE3400 Industrial Heavy Duty Switch -->
     <rect x="35" y="275" width="510" height="150" fill="url(#unitGrad)" stroke="#0ea5e9" stroke-width="2" rx="8"/>
     <rect x="50" y="290" width="480" height="40" rx="4" fill="url(#ciscoGrad)"/>
     <text x="65" y="315" fill="#fff" font-size="13" font-weight="700">Cisco Catalyst IE3400 Heavy Duty (IE-3400-8P4S)</text>
@@ -129,7 +126,7 @@
     <text x="55" y="395" fill="#94a3b8" font-size="11">• Industrial Alarm Relays: Door Tamper Switch &amp; Cabinet Over-Temp Probe</text>
     <circle cx="500" cy="355" r="5" fill="#10b981"/>
 
-    <!-- Phoenix Contact QUINT4 DC-UPS (DIN Rail) -->
+    <!-- Phoenix Contact QUINT4 DC-UPS -->
     <rect x="35" y="440" width="510" height="130" fill="#1e293b" stroke="#10b981" stroke-width="1.5" rx="8"/>
     <text x="55" y="470" fill="#34d399" font-size="13" font-weight="700">Phoenix Contact QUINT4-UPS 24V DC / 20A Power Supply</text>
     <text x="55" y="495" fill="#94a3b8" font-size="11">• IQ Technology Battery Monitoring &amp; State of Charge (SoC) Telemetry</text>
@@ -141,7 +138,7 @@
     <text x="55" y="615" fill="#fef08a" font-size="12" font-weight="700">Telecommunications Grounding Busbar (TGB) - ANSI/TIA-607-B</text>
     <text x="55" y="633" fill="#fef9c3" font-size="10">Solid Electrolytic Copper Bar 50x6mm | Resistance to TMGB &lt; 1.0 Ohm</text>
 
-    <!-- Industrial Enclosure Specs & Door Interlock -->
+    <!-- Industrial Enclosure Specs -->
     <rect x="35" y="660" width="510" height="110" fill="#0b1329" stroke="#1e293b" rx="6"/>
     <text x="55" y="690" fill="#38bdf8" font-size="12" font-weight="700">Enclosure Physical Hardening (IEC 60529 / IK10)</text>
     <text x="55" y="710" fill="#94a3b8" font-size="11">• Double-bit Key Cam Lock with Microswitch Tamper Contact</text>
